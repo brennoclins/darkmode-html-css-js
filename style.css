@@ -1,0 +1,144 @@
+html {
+    height: 100%;
+    font-family: 'Montserrat';
+    /* 12 * 100 / 16 */
+    /* 75% = 12px */
+    font-size: 75%;
+    
+    --bg: #FCFCFC;
+    --bg-footer: rgba(206, 222, 255, 0.7);
+    --bg-panel: rgb(204, 219, 252);
+    --color-headings: #0077FF;
+    --color-text: #333333;
+    --color-link: rgb(16, 120, 218);
+}
+
+body {
+    background-color: var(--bg);
+}
+
+.container {
+    background-color: var(--bg-panel);
+
+    margin: 0.25rem;
+    padding: 0.25rem;
+
+    border-radius: 5vmin;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+h1 {
+    margin-left: 0.5rem;
+    color: var(--color-headings);
+}
+
+p {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    margin: 2rem 0.5rem;
+}
+
+/* ocultando o quadradinho padrão do checkbox */
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+/* usando a label para ser o botão liga desliga o Dark Mode */
+label {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+/* criando a bolinha branca que fica dentro do botão liga desliga */
+label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+/* quando o input estiver no modo checked mudamos a cor de fundo da labal */
+input:checked + label {
+    background-color: var(--color-headings);
+}
+
+/* quando o Dark Mode esta  ligado a bolinha deve esta  no lado direito */
+input:checked + label::after {
+    left: 50%;
+}
+
+/* altera o tamanho da label logo apos ela ser ativada, isso cria um efeito 
+bem bacana de transição da bolinha branca de um lado para o outro */
+label:active:after {
+    width: 45px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--bg-footer);
+    margin: 0.25rem;
+    padding: 0.25rem;
+
+    border-radius: 5vmin;
+}
+
+.footer h3 {
+    color: var(--color-text);
+    margin-left: 2rem;
+}
+
+.footer a {
+    text-transform: uppercase;
+    font-weight: bold;
+    /* letter-spacing: 0.05rem; */
+    color: var(--color-link);
+    text-decoration: none;
+
+    margin-left: 2rem;
+}
+
+.footer a:nth-last-child(1) {
+    margin-bottom: 1rem;
+}
+
+
+@media (min-width: 900px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+@media (min-width: 600px) {
+    html {
+        /* 14 * 100 / 16 */
+        /* 87.5% = 14px */
+        font-size: 87.5%; 
+    }
+
+    .container, .footer {    
+        margin: 1.25rem;
+        padding: 1.25rem;
+    }
+}
